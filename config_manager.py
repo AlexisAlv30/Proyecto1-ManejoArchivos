@@ -56,6 +56,11 @@ class ConfigManager:
                     if field not in datos or datos[field] is None:
                         raise ValueError(f"Falta el campo requerido: {field}")
 
+                try:
+                    int(datos["tamano_fuente"])
+                except ValueError:
+                    raise ValueError("El tamaño de fuente debe ser un número entero válido.")
+
                 print("[ÉXITO] Configuración cargada correctamente desde el archivo CSV.")
                 return datos
 
